@@ -1,0 +1,5 @@
+/*
+
+    Aqui irian los scripts del sitio web
+
+*/
