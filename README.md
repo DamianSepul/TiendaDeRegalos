@@ -1,6 +1,7 @@
 Proyecto final de la materia de Desarrollo de sistemas complejos. Equipo 4
 
 Reglas:
+
 -Siempre comenten el codigo paro, para saber que hace cada cosa
 
 -No pongan cosas raras en los commits
