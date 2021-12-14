@@ -10,6 +10,10 @@ Reglas:
 
 -Cualquier duda, se puede preguntar sin miedo :)
 
--Si añaden otro archivo html va en la raiz 
+-Como trabajamos con node js, en el packet.json ahi vienen los modulos que se necesitan, solo pongan "npm install" y le instara todos los modulos que necesiten para el proyecto
+
+- Para correr el node js, solo pongan node run dev, hice una script para que se este reiniciando y no iniciarlo manualmente para cada cambio
 
 -Que el Irving LC 
+
+
