@@ -1,0 +1,29 @@
+{
+  "name": "tienda-de-regalos",
+  "version": "1.0.0",
+  "description": "Proyecto final de la materia de Desarrollo de sistemas complejos. Equipo 4",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DamianSepul/TiendaDeRegalos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DamianSepul/TiendaDeRegalos/issues"
+  },
+  "homepage": "https://github.com/DamianSepul/TiendaDeRegalos#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
