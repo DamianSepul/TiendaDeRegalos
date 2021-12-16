@@ -24,8 +24,10 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 //Routes, distintas rutas que tomara el sitio web
-app.use(require('./apis.js'));
-
+app.use("/api",require("./apis.js"));
+app.get("/",(req,res)=>{
+    res.sendFile(path.join(__dirname,"views/index.html"));
+});
 
 //Empezar el servidor a funcionar en el puerto asignado
 app.listen(app.get("port"),()=>{
