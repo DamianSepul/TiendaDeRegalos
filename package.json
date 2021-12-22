@@ -4,7 +4,8 @@
   "description": "Proyecto final de la materia de Desarrollo de sistemas complejos. Equipo 4",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon node index.js"
+    "dev": "nodemon node index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
