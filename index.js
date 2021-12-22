@@ -24,7 +24,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 //Routes, distintas rutas que tomara el sitio web
-app.use("/api",require("./apis.js"));
+app.use("/api",require("./routes/apis.js"));
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/index.html"));
 });

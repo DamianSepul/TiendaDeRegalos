@@ -11,13 +11,14 @@ const mysql = require("mysql");
 const mysqlConnection = mysql.createConnection({
     host:"localhost",
     user: "root",
-    password:"password",
-    database:"tr",
+    password:'',
+    database:"test",
     multipleStatements:true
 });
 
 mysqlConnection.connect((err)=>{
     if(err){
+        console.log("no se pudo conectar la BD");
         console.error(err);
         return;
     }else{
