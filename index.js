@@ -29,6 +29,10 @@ app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/index.html"));
 });
 
+app.get("/documentacion",(req,res)=>{
+    res.sendFile(path.join(__dirname,"public/docs/index.html"));
+})
+
 //Empezar el servidor a funcionar en el puerto asignado
 app.listen(app.get("port"),()=>{
     console.log ("Server funcionando desde puerto:",app.get("port"));
