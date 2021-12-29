@@ -68,9 +68,121 @@
                     <img src="user.png">
                 </div>
             </div>
+            <!--Cards-->
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">14</div>
+                        <div class="cardName">Numero</div>
+                    </div>
+                    <div class="iconBx">
+                        <i class="bi bi-activity"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">14</div>
+                        <div class="cardName">Numero</div>
+                    </div>
+                    <div class="iconBx">
+                        <i class="bi bi-activity"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">14</div>
+                        <div class="cardName">Numero</div>
+                    </div>
+                    <div class="iconBx">
+                        <i class="bi bi-activity"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers">14</div>
+                        <div class="cardName">Numero</div>
+                    </div>
+                    <div class="iconBx">
+                        <i class="bi bi-activity"></i>
+                    </div>
+                </div>
+            </div>
+            <!--Data-->
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Ordenes</h2>
+                        <a href="" class="btn">Ver todo</a>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Nombre</td>
+                                <td>Precio</td>
+                                <td>Inventario</td>
+                                <td>Estado</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Peluche</td>
+                                <td>$200</td>
+                                <td>20</td>
+                                <td><span class="status active">Activo</span></td>
+                            </tr>
+                            <tr>
+                                <td>Llavero</td>
+                                <td>$150</td>
+                                <td>15</td>
+                                <td><span class="status active">Activo</span></td>
+                            </tr>
+                            <tr>
+                                <td>Llavero</td>
+                                <td>$150</td>
+                                <td>15</td>
+                                <td><span class="status active">Activo</span></td>
+                            </tr>
+                            <tr>
+                                <td>Llavero</td>
+                                <td>$150</td>
+                                <td>15</td>
+                                <td><span class="status inactive">Desactivo</span></td>
+                            </tr>
+                            <tr>
+                                <td>Llavero</td>
+                                <td>$150</td>
+                                <td>15</td>
+                                <td><span class="status active">Activo</span></td>
+                            </tr>
+                            <tr>
+                                <td>Llavero</td>
+                                <td>$150</td>
+                                <td>15</td>
+                                <td><span class="status active">Activo</span></td>
+                            </tr>
+                            <tr>
+                                <td>Llavero</td>
+                                <td>$150</td>
+                                <td>15</td>
+                                <td><span class="status active">Activo</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
     <script>
+        //Toggle
+        let toggle = document.querySelector('.toggle');
+        let navigation = document.querySelector('.navigation');
+        let main = document.querySelector('.main');
+
+        toggle.onclick = function(){
+            navigation.classList.toggle('active');
+            main.classList.toggle('active');
+        }
+        //Hovered class
         let list = document.querySelectorAll('.navigation li');
         function activeLink(){
             list.forEach((item) =>

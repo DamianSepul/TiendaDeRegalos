@@ -4,12 +4,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 :root
 {
     --blue: #287bff;
-    --withe: #fff;
+    --white: #fff;
     --grey: #f5f5f5;
     --black: #222;
     --darkgray: #999;
@@ -38,6 +39,10 @@ body
     overflow: hidden;
 }
 
+.navigation.active {
+    width: 80px;
+}
+
 .navigation ul
 {
     position: absolute;
@@ -57,7 +62,7 @@ body
 .navigation ul li:hover,
 .navigation ul li.hovered
 {
-    background: var(--withe);
+    background: var(--white);
 }
 .navigation ul li:nth-child(1)
 {
@@ -72,7 +77,7 @@ body
     width: 100%;
     display: flex;
     text-decoration: none;
-    color: var(--withe);
+    color: var(--white);
 }
 
 .navigation ul li:hover a,
@@ -120,7 +125,7 @@ body
     height: 50px;
     background: transparent;
     border-radius: 50%;
-    box-shadow: 35px 35px 0 10px var(--withe);
+    box-shadow: 35px 35px 0 10px var(--white);
     pointer-events: none;
 }
 
@@ -135,7 +140,7 @@ body
     height: 50px;
     background: transparent;
     border-radius: 50%;
-    box-shadow: 35px -35px 0 10px var(--withe);
+    box-shadow: 35px -35px 0 10px var(--white);
     pointer-events: none;
 }
 
@@ -145,8 +150,13 @@ body
     width: calc(100% - 300px);
     left: 300px;
     min-height: 100vh;
-    background: var(--withe);
+    background: var(--white);
     transition: 0.5s;
+}
+
+.main.active{
+    width: calc(100% - 80px);
+    left: 80px;
 }
 
 .topbar{
@@ -186,6 +196,7 @@ body
     border-radius: 40px;
     padding: 5px 20px;
     padding-left: 35px;
+    font-size: 18px;
     outline: none;
     border: 1px solid var(--darkgray);
 }
@@ -213,4 +224,147 @@ body
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.cardBox{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+
+.cardBox .card{
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    margin: 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardBox .card .numbers{
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5em;
+    color: var(--blue);
+}
+
+.cardBox .card .cardName{
+    color: var(--darkgray);
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+
+.cardBox .card .iconBx{
+    font-size: 3.5em;
+    color: var(--darkgray);
+}
+
+.cardBox .card:hover{
+    background: var(--blue);
+}
+
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx
+{
+    color: var(--white);
+}
+
+.details{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 30px;
+    /*margin-top: 10px;*/
+}
+
+.details .recentOrders{
+    position: relative;
+    display: grid;
+    min-height: 500px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+
+.cardHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.cardHeader h2{
+    font-weight: 600;
+    color: var(--blue);
+}
+
+.btn{
+    position: relative;
+    padding: 5px 10px;
+    background: var(--blue);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+}
+
+.details table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+
+}
+
+.details table thead td{
+    font-weight: 600;
+} 
+
+.details .recentOrders table tr{
+    color: var(--black);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details .recentOrders table tr:last-child{
+    border-bottom: none;
+}
+
+.details .recentOrders table tbody tr:hover{
+    background: var(--blue);
+    color: var(--white);
+}
+
+.details .recentOrders table tr td{
+    padding: 10px;
+    text-align: center;
+}
+
+.details .recentOrders table tr td:nth-child(1){
+    text-align: start;
+}
+
+.status.active {
+    padding: 5px;
+    background: #8de02c;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+
+}
+
+.status.inactive {
+    padding: 5px;
+    background: #e02c2c;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+
 }
