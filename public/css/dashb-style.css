@@ -1,10 +1,10 @@
 
-*
+* 
 {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    padding: 0 ;
+    box-sizing: border-box ;
+    font-family:Arial, Helvetica, sans-serif ;
 }
 
 :root
@@ -22,14 +22,17 @@ body
     overflow-x: hidden;
 }
 
-.container
+.db-container
 {
     position: relative;
     width: 100%;
 }
-
-.navigation
+.db-nav-ul{
+    padding: 0;
+}
+.db-navigation
 {
+    
     position: fixed;
     width: 300px;
     height: 100%;
@@ -39,11 +42,11 @@ body
     overflow: hidden;
 }
 
-.navigation.active {
+.db-navigation.active {
     width: 80px;
 }
 
-.navigation ul
+.db-navigation ul
 {
     position: absolute;
     top: 0;
@@ -51,7 +54,7 @@ body
     width: 100%;
 }
 
-.navigation ul li 
+.db-navigation ul li 
 {
     position: relative;
     width: 100%;
@@ -59,18 +62,18 @@ body
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
 }
-.navigation ul li:hover,
-.navigation ul li.hovered
+.db-navigation ul li:hover,
+.db-navigation ul li.hovered
 {
     background: var(--white);
 }
-.navigation ul li:nth-child(1)
+.db-navigation ul li:nth-child(1)
 {
     margin-bottom: 40px;
     pointer-events: none;
 }
 
-.navigation ul li a
+.db-navigation ul li a
 {
     position: relative;
     display: block;
@@ -80,13 +83,13 @@ body
     color: var(--white);
 }
 
-.navigation ul li:hover a,
-.navigation ul li.hovered a
+.db-navigation ul li:hover a,
+.db-navigation ul li.hovered a
 {
     color: var(--blue);
 }
 
-.navigation ul li a .icon
+.db-navigation ul li a .db-icon
 {
     position: relative;
     display: block;
@@ -96,12 +99,12 @@ body
     text-align: center;
 }
 
-.navigation ul li a .icon .bi
+.db-navigation ul li a .db-icon .bi
 {
     font-size: 1.75em;
 }
 
-.navigation ul li a .title
+.db-navigation ul li a .db-title
 {
     position: relative;
     display: block;
@@ -114,8 +117,8 @@ body
 
 /*Curve outside*/
 
-.navigation ul li:hover a::before,
-.navigation ul li.hovered a::before
+.db-navigation ul li:hover a::before,
+.db-navigation ul li.hovered a::before
 {
     content: '';
     position: absolute;
@@ -129,8 +132,8 @@ body
     pointer-events: none;
 }
 
-.navigation ul li:hover a::after,
-.navigation ul li.hovered a::after
+.db-navigation ul li:hover a::after,
+.db-navigation ul li.hovered a::after
 {
     content: '';
     position: absolute;
@@ -145,7 +148,7 @@ body
 }
 
 /*Main*/
-.main{
+.db-main{
     position: absolute;
     width: calc(100% - 300px);
     left: 300px;
@@ -154,12 +157,12 @@ body
     transition: 0.5s;
 }
 
-.main.active{
+.db-main.active{
     width: calc(100% - 80px);
     left: 80px;
 }
 
-.topbar{
+.db-topbar{
     width: 100%;
     height: 60px;
     display: flex;
@@ -168,7 +171,7 @@ body
     padding: 0 10px;
 }
 
-.toggle{
+.db-toggle{
     position: relative;
     width: 60px;
     height: 60px;
@@ -179,18 +182,18 @@ body
     cursor: pointer;
 }
 
-.search{
+.db-search{
     position: relative;
     width: 400px;
     margin: 0 10px;
 }
 
-.search label{
+.db-search label{
     position: relative;
     width: 100%;
 }
 
-.search label input{
+.db-search label input{
     width: 100%;
     height: 40px;
     border-radius: 40px;
@@ -201,14 +204,14 @@ body
     border: 1px solid var(--darkgray);
 }
 
-.search label .bi{
+.db-search label .bi{
     position: absolute;
     top: 0;
     left: 10px;
     font-size: 1.2em;
 }
 
-.user{
+.db-user{
     position: relative;
     width: 40px;
     height: 40px;
@@ -217,7 +220,7 @@ body
     cursor: pointer;
 }
 
-.user img{
+.db-user img{
     position: absolute;
     top: 0;
     left: 0;
@@ -226,7 +229,7 @@ body
     object-fit: cover;
 }
 
-.cardBox{
+.db-cardBox{
     position: relative;
     width: 100%;
     padding: 20px;
@@ -234,7 +237,7 @@ body
     grid-template-columns: repeat(4,1fr);
 }
 
-.cardBox .card{
+.db-cardBox .db-card{
     position: relative;
     background: var(--white);
     padding: 30px;
@@ -246,36 +249,36 @@ body
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
 
-.cardBox .card .numbers{
+.db-cardBox .db-card .db-numbers{
     position: relative;
     font-weight: 500;
     font-size: 2.5em;
     color: var(--blue);
 }
 
-.cardBox .card .cardName{
+.db-cardBox .db-card .db-cardName{
     color: var(--darkgray);
     font-size: 1.1em;
     margin-top: 5px;
 }
 
-.cardBox .card .iconBx{
+.db-cardBox .db-card .db-iconBx{
     font-size: 3.5em;
     color: var(--darkgray);
 }
 
-.cardBox .card:hover{
+.db-cardBox .db-card:hover{
     background: var(--blue);
 }
 
-.cardBox .card:hover .numbers,
-.cardBox .card:hover .cardName,
-.cardBox .card:hover .iconBx
+.db-cardBox .db-card:hover .db-numbers,
+.db-cardBox .db-card:hover .db-cardName,
+.db-cardBox .db-card:hover .db-iconBx
 {
     color: var(--white);
 }
 
-.details{
+.db-details{
     position: relative;
     width: 100%;
     padding: 20px;
@@ -285,7 +288,7 @@ body
     /*margin-top: 10px;*/
 }
 
-.details .recentOrders{
+.db-details .db-recentOrders{
     position: relative;
     display: grid;
     min-height: 500px;
@@ -295,18 +298,18 @@ body
     border-radius: 20px;
 }
 
-.cardHeader{
+.db-cardHeader{
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
 
-.cardHeader h2{
+.db-cardHeader h2{
     font-weight: 600;
     color: var(--blue);
 }
 
-.btn{
+.db-btn{
     position: relative;
     padding: 5px 10px;
     background: var(--blue);
@@ -315,41 +318,41 @@ body
     border-radius: 6px;
 }
 
-.details table{
+.db-details table{
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
 
 }
 
-.details table thead td{
+.db-details table thead td{
     font-weight: 600;
 } 
 
-.details .recentOrders table tr{
+.db-details .db-recentOrders table tr{
     color: var(--black);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.details .recentOrders table tr:last-child{
+.db-details .db-recentOrders table tr:last-child{
     border-bottom: none;
 }
 
-.details .recentOrders table tbody tr:hover{
+.db-details .db-recentOrders table tbody tr:hover{
     background: var(--blue);
     color: var(--white);
 }
 
-.details .recentOrders table tr td{
+.db-details .db-recentOrders table tr td{
     padding: 10px;
     text-align: center;
 }
 
-.details .recentOrders table tr td:nth-child(1){
+.db-details .db-recentOrders table tr td:nth-child(1){
     text-align: start;
 }
 
-.status.active {
+.db-status.active {
     padding: 5px;
     background: #8de02c;
     color: var(--white);
@@ -359,7 +362,7 @@ body
 
 }
 
-.status.inactive {
+.db-status.inactive {
     padding: 5px;
     background: #e02c2c;
     color: var(--white);
@@ -372,57 +375,57 @@ body
 
 /*Responsive*/
 @media (max-width: 991px){
-    .navigation{
+    .db-navigation{
         left: -300px;
     }
-    .navigation.active{
+    .db-navigation.active{
         width: 300px;
         left: 0;
     }
-    .main{
+    .db-main{
         width: 100%;
         left: 0;
     }
-    .main.active{
+    .db-main.active{
         left: 300px;
     }
-    .cardBox{
+    .db-cardBox{
         grid-template-columns: repeat(2,1fr);
     }
 }
 
 @media (max-width: 768px){
-    .details{
+    .db-details{
         grid-template-columns: repeat(1,1fr);
     }
-    .recentOrders{
+    .db-recentOrders{
         overflow-x: auto;
     }
-    .status.inactive{
+    .db-status.inactive{
         white-space: nowrap;
     }
 }
 
 @media (max-width:480px){
-    .cardBox{
+    .db-cardBox{
         grid-template-columns: repeat(1,1fr);
     }
-    .user{
+    .db-user{
         max-width: 40px;
     }
-    .navigation{
+    .db-navigation{
         width: 100%;
         left: -100%;
         z-index: 1000;
     }
-    .navigation.active{
+    .db-navigation.active{
         width: 100%;
         left: 0;
     }
-    .toggle{
+    .db-toggle{
         z-index: 10001;
     }
-    .main.active .toggle{
+    .db-main.active .toggle{
         position: fixed;
         right: 0;
         left: initial;
