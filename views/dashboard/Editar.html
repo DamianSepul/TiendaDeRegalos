@@ -51,22 +51,6 @@
                 </div>
             </div>
             <!--Data-->
-            <div class="row">
-                <div class="col-md-auto">
-                    <div class="db-details">
-                        <div class="db-recentOrders">
-                            <div class="db-cardHeader">
-                                <h2>Acciones</h2>
-                            </div>
-                            <div class="container align-items-center">
-                                <a href="/views/dashboard/Agregar.html"><button type="button" class="btn btn-outline-primary btn-lg m-2"><i class="bi bi-plus-lg"></i> Agregar</button></a>
-                                <a href="/views/dashboard/Editar.html"><button type="button" class="btn btn-outline-warning btn-lg m-2"><i class="bi bi-pencil"></i> Editar</button></a>
-                                <a href="/views/dashboard/Eliminar.html"><button type="button" class="btn btn-outline-danger btn-lg m-2"><i class="bi bi-trash"></i> Eliminar</button></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="db-details">
                 <div class="db-recentOrders">
                     <div class="db-cardHeader">
@@ -80,6 +64,7 @@
                                 <th scope="col">First</th>
                                 <th scope="col">Last</th>
                                 <th scope="col">Handle</th>
+                                <th class="text-center" scope="col">Seleccionar</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -88,23 +73,82 @@
                                 <td>Mark</td>
                                 <td>Otto</td>
                                 <td>@mdo</td>
+                                <th class="text-center"><button type="button" class="btn btn-primary"><i class="bi bi-pencil"></i></button></th>
                               </tr>
                               <tr>
                                 <th scope="row">2</th>
                                 <td>Jacob</td>
                                 <td>Thornton</td>
                                 <td>@fat</td>
+                                <th class="text-center"><button type="button" class="btn btn-primary"><i class="bi bi-pencil"></i></button></th>
                               </tr>
                               <tr>
                                 <th scope="row">3</th>
                                 <td colspan="2">Larry the Bird</td>
                                 <td>@twitter</td>
+                                <th class="text-center"><button type="button" class="btn btn-primary"><i class="bi bi-pencil"></i></button></th>
                               </tr>
                             </tbody>
                           </table>
                     </div>    
                 </div>
             </div>
+            <div class="db-details">
+                <div class="db-recentOrders">
+                    <div class="db-cardHeader">
+                        <h2>Editar</h2>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre</label>
+                                    <input class="form-control" placeholder="...">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre</label>
+                                    <input class="form-control" placeholder="...">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre</label>
+                                    <input class="form-control" placeholder="...">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre</label>
+                                    <input class="form-control" placeholder="...">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre</label>
+                                    <input class="form-control" placeholder="...">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre</label>
+                                    <input class="form-control" placeholder="...">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre</label>
+                                    <input class="form-control" placeholder="...">
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/views/dashboard/Index.html"><button type="button" class="btn btn-outline-danger m-2 float-end">Cancelar</button></a>
+                        <a href="/views/dashboard/Index.html"><button type="button" class="btn btn-outline-primary m-2 float-end">Aceptar</button></a>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
     <script>
