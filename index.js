@@ -28,7 +28,19 @@ app.use("/api",require("./routes/apis.js"));
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/index.html"));
 });
-
+//Rutas del Dashboard
+    app.get("/dashboard",(req,res)=>{
+        res.sendFile(path.join(__dirname,"views/dashboard/index.html"));
+    });
+    app.get("/agregar",(req,res)=>{
+        res.sendFile(path.join(__dirname,"views/dashboard/Agregar.html"));
+    });
+    app.get("/editar",(req,res)=>{
+        res.sendFile(path.join(__dirname,"views/dashboard/Editar.html"));
+    });
+    app.get("/eliminar",(req,res)=>{
+        res.sendFile(path.join(__dirname,"views/dashboard/Eliminar.html"));
+    });
 //Empezar el servidor a funcionar en el puerto asignado
 app.listen(app.get("port"),()=>{
     console.log ("Server funcionando desde puerto:",app.get("port"));
