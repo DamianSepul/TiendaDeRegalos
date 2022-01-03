@@ -28,6 +28,7 @@ app.use("/api",require("./routes/apis.js"));
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/index.html"));
 });
+
 //Rutas del Dashboard
     app.get("/dashboard",(req,res)=>{
         res.sendFile(path.join(__dirname,"views/dashboard/Index.html"));
