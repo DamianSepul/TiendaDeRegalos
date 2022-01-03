@@ -16,6 +16,4 @@ const mysqlConnection = mysql.createPool({
     multipleStatements:true
 });
 
-
-
 module.exports=mysqlConnection;
