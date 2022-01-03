@@ -30,7 +30,7 @@ app.get("/",(req,res)=>{
 });
 //Rutas del Dashboard
     app.get("/dashboard",(req,res)=>{
-        res.sendFile(path.join(__dirname,"views/dashboard/Indexd.html"));
+        res.sendFile(path.join(__dirname,"views/dashboard/Index.html"));
     });
     app.get("/agregar",(req,res)=>{
         res.sendFile(path.join(__dirname,"views/dashboard/Agregar.html"));
