@@ -8,10 +8,8 @@ const { response } = require('express');
 const { url } = require('inspector');
 const { header } = require('express/lib/request');
 
-
-router.get("/VerProductos",(req,res)=>{
+router.get("/SelectProducto",(req,res)=>{
     mysqlConnection.query("SELECT * FROM productos",(err,rows,fields )=>{
-        
         if(!err){
             res.json(rows);
         }else{

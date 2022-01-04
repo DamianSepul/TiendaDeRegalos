@@ -51,7 +51,6 @@ const { header } = require('express/lib/request');
 //Api para conectarse desde TIENDA DE REGALOS => CENTRAL DEERLAND
 router.get("/ProductoTiendaDeRegalo",(req,res)=>{
     mysqlConnection.query("SELECT * FROM productos",(err,rows,fields )=>{
-        
         if(!err){
             res.json(rows);
         }else{
