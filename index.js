@@ -25,6 +25,9 @@ app.use(express.json());
 
 //Routes, distintas rutas que tomara el sitio web
 app.use("/api",require("./routes/apis.js"));
+
+app.use("/articulos",require("./routes/productos.js"));
+
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/index.html"));
 });

@@ -107,12 +107,14 @@ router.get("/ProductoTiendaDeRegalo",(req,res)=>{
 
 //API para registrar las ventas realizadas en central. CENTRAL => TIENDA
 router.post("/SouvenirsVendidos",(req,res)=>{
-    const {NumVenta,idProducto,idTransaccion,numTransaccion,numTarjeta,FechaV,idCliente,total}=req.body;
+    const {NumVenta,idProducto,idTransaccion,numTransaccion,numTarjeta,FechaV,idCliente,total,cantidad}=req.body;
     mysqlConnection.query(`
     INSERT INTO transacciones VALUES ('${idTransaccion}','${numTransaccion}','Completada');
-    INSERT INTO venta  VALUES ('${NumVenta}','${FechaV}','${numTarjeta}','Central','${idCliente}','${idTransaccion}','${total}');`,
+    INSERT INTO venta  VALUES ('${NumVenta}', '${FechaV}', '${numTarjeta}', 'Central', '${idCliente}', '${idTransaccion}', '${total}');
+    INSERT INTO ventadetalle (cantidad, precio, idProducto, idVenta)  VALUES ('${cantidad}','${total}','${idProducto}', '${NumVenta}');
+    UPDATE productos SET stock = stock-${cantidad} WHERE idProducto = ${idProducto}
+    `,
     (err,rows,fields)=>{
-        
         if(!err){
             res.json({status: "Se registro la venta correctamente"});
         }else {
@@ -125,11 +127,12 @@ router.post("/SouvenirsVendidos",(req,res)=>{
 //APi para realizar el monto a la habitación de hotel. TIENDA => HOTEL
 //Discutir con el taquitos sobre esta api
 //Discutir con los pibes sobre la id de venta y guardarla en local.
-router.get ("/MontoServicioHabitacion",(req,res)=>{
+router.get ("/MontoServicioHabitacion/:idVenta",(req,res)=>{
     //Ahorita solo usamos esa id como prueba pero en el desarrollo mas adelante
     //Se va a cambiar
-    const idVenta=4;
-    mysqlConnection.query(`SELECT envioshotel.nombreDest,envioshotel.nHabitacion,venta.total FROM envioshotel,venta WHERE venta.idVenta=${idVenta}`,
+    const {idVenta}=req.params;
+    let idVentax= idVenta||1;
+    mysqlConnection.query(`SELECT envioshotel.nombreDest,envioshotel.nHabitacion,venta.total FROM envioshotel,venta WHERE venta.idVenta=${idVentax}`,
     (err,rows,fields)=>{
       
         if(!err){
@@ -146,8 +149,9 @@ router.get ("/MontoServicioHabitacion",(req,res)=>{
 
 //API para realizar una petición a experiencias DEERLAND. TIENDA => EXP DEERLAND
 //Idproducto sera cambiado mas adelante del proyecto utilizando procedimientos almacenados
-router.get("/PromocionesTR/",(req,res)=>{
-    let idProducto=1;
+router.get("/PromocionesTR/:id",(req,res)=>{
+    const {id}=req.params;
+    let idProducto=id||1;
     mysqlConnection.query(`SELECT idProducto,precio,descripcion FROM productos WHERE idProducto= ${idProducto}`,(err,rows,fields)=>{
         if(!err){
             res.json(rows);
@@ -210,8 +214,10 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
 
 
 //API para la solicitud de transferencia con banco. TIENDA => BANCO
-  router.post("/SolicitudTransferencia",(req,res)=>{
-     
+  router.post("/SolicitudTransferencia/:idCliente",(req,res)=>{
+     const {idCliente}=req.params;
+     let idClientex= idCliente||1;
+     console.log(idCliente);
     //Falta incluir que usuario lo esta utilizando pero seria en la pagina. Ese 1 es el usuario por defecto
       axios.post("https://deerbank.herokuapp.com/transfer/",req.body,
       {
@@ -220,7 +226,7 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
       .then(data=>{
         const {transaction_num,status,date,ammount,origin,destiny}=data.data;
         mysqlConnection.query(`INSERT INTO transacciones (numTransaccion, estado) VALUES ('${transaction_num}','${status}');
-        INSERT INTO venta (fecha,numTarjeta,tipoVenta,idCliente,idTransaccion,total) VALUES('${date}','${origin}','Tienda',1,last_insert_id(),'${ammount}')
+        INSERT INTO venta (fecha,numTarjeta,tipoVenta,idCliente,idTransaccion,total) VALUES('${date}','${origin}','Tienda','${idClientex}',last_insert_id(),'${ammount}')
         `,(err,rows,fields)=>{
             if(!err){
                 res.json({status:"Transacción exitosa"});
