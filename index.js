@@ -25,12 +25,14 @@ app.use(express.json());
 
 //Routes, distintas rutas que tomara el sitio web
 app.use("/api",require("./routes/apis.js"));
+app.use("/productos",require("./routes/productos.js"));
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/index.html"));
 });
+
 //Rutas del Dashboard
     app.get("/dashboard",(req,res)=>{
-        res.sendFile(path.join(__dirname,"views/dashboard/Indexd.html"));
+        res.sendFile(path.join(__dirname,"views/dashboard/Index.html"));
     });
     app.get("/agregar",(req,res)=>{
         res.sendFile(path.join(__dirname,"views/dashboard/Agregar.html"));
@@ -40,6 +42,9 @@ app.get("/",(req,res)=>{
     });
     app.get("/eliminar",(req,res)=>{
         res.sendFile(path.join(__dirname,"views/dashboard/Eliminar.html"));
+    });
+    app.get("/crud",(req,res)=>{
+        res.sendFile(path.join(__dirname,"views/dashboard/PruebaCrud.html"));
     });
 //Empezar el servidor a funcionar en el puerto asignado
 app.listen(app.get("port"),()=>{
