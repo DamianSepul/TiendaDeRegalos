@@ -130,25 +130,48 @@ router.get("/MontoServicioHabitacion/:idVenta",(req,res)=>{
     mysqlConnection.query(`SELECT envioshotel.nombreDest,envioshotel.nHabitacion,venta.total FROM envioshotel,venta WHERE venta.idVenta=${idVentax}`,
     (err,rows,fields)=>{
       
+        
         if(!err){
-            // axios.get("url")
-            // .then(data=>{
+            console.log(rows[0]);
+                        const envioHotel={
+                                ammount:rows[0].total,
+                                room:rows[0].nHabitacion,
+                                description: "Prueba tienda de regalos",
+                                payed:0
+                        }
+            axios.post("https://hotel-deerland.herokuapp.com/api/auth/services/store",envioHotel)
+            .then(data=>{
 
-            // })
-            // .catch(error=>{
+                res.json({
+                    mensaje:"Se guardo la informacion correctamente en hotel"
+                });
+            })
+            .catch(error=>{
+                res.status(500).send({
+                    message:  "Ocurrio un error con el servidor"
+                })
+            });
 
-            // })
-            res.json(rows);
-            console.log(rows[0].nombreDest);
-            // axios.post("url",envio)
+            // axios.get("https://hotel-deerland.herokuapp.com/api/auth/services/client-info/6624566578")
             // .then(data=>{
-            //     console.log(envio);
+            //     for(let i=0;i<data.data['client-info'].length;i++){
+            //         if (data.data['client-info'][i]['number']==rows[0].nHabitacion){
+            //             const envioHotel={
+            //                     ammount:rows[0].total,
+            //                     room:rows[0].nHabitacion,
+            //                     description: "taquitos tqm",
+            //                     payed:0
+            //             }
+            //             console.log(envioHotel);
+                        
+            //         }
+            //     }
             // })
-            // .catch(error=>{
-            //     res.status(500).send({
-            //         message:  "Ocurrio un error con el servidor"
-            //     })
-            // });
+            // .catch(error=>{ 
+            //     console.log(error);
+            // })
+            // res.json(rows);
+
         }else{
             res.json({
                 mensaje:"Ocurrio un error, favor de verificar los datos"
