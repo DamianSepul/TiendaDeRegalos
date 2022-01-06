@@ -26,30 +26,20 @@ app.use(express.json());
 //Routes, distintas rutas que tomara el sitio web
 app.use("/api",require("./routes/apis.js"));
 app.use("/productos",require("./routes/productos.js"));
+//Rutas frontEnd
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/index.html"));
 });
-
-
 app.get("/login.html",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/login.html"));
 });
 
 //Rutas del Dashboard
-    app.get("/dashboard2",(req,res)=>{
-        res.sendFile(path.join(__dirname,"views/dashboard/.html"));
+    app.get("/db-productos",(req,res)=>{
+        res.sendFile(path.join(__dirname,"views/dashboard/Productos.html"));
     });
-    app.get("/agregar",(req,res)=>{
-        res.sendFile(path.join(__dirname,"views/dashboard/Agregar.html"));
-    });
-    app.get("/editar",(req,res)=>{
-        res.sendFile(path.join(__dirname,"views/dashboard/Editar.html"));
-    });
-    app.get("/eliminar",(req,res)=>{
-        res.sendFile(path.join(__dirname,"views/dashboard/Eliminar.html"));
-    });
-    app.get("/dashboard",(req,res)=>{
-        res.sendFile(path.join(__dirname,"views/dashboard/PruebaCrud.html"));
+    app.get("/db-ventas",(req,res)=>{
+        res.sendFile(path.join(__dirname,"views/dashboard/Ventas.html"));
     });
 //Empezar el servidor a funcionar en el puerto asignado
 app.listen(app.get("port"),()=>{
