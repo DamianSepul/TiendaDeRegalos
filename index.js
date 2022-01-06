@@ -38,6 +38,9 @@ app.get("/",(req,res)=>{
 app.get("/login.html",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/login.html"));
 });
+app.get("/ventas.html",(req,res)=>{
+    res.sendFile(path.join(__dirname,"views/ventas.html"));
+});
 
 //Rutas del Dashboard
     app.get("/dashboard",(req,res)=>{

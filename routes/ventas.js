@@ -57,6 +57,23 @@ router.post("/QuitarProducto/:idCliente",(req,res)=>{
     });
 });
 
+router.post("/AgregarEnvioHotel/:idVenta",(req,res)=>{
+    const {idVenta}=req.params;
+    const {nHabitacion,nombreDest, fechaEnvio,horaEnvio}=req.body;
+    mysqlConnection.query(`
+    INSERT INTO envioshotel (nHabitacion, nombreDest, fechaEnvio, horaEnvio, idVenta) VALUES ('${nHabitacion}','${nombreDest}','${fechaEnvio}','${horaEnvio}','${idVenta}')   
+    `,(err,rows,fields )=>{
+        if(!err){
+            res.json(rows);
+        }else{
+            res.json({
+                mensaje:"Error al mostrar los productos"
+            });
+        }
+    });
+});
+
+
 
 
 

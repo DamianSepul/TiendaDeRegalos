@@ -124,24 +124,38 @@ router.post("/SouvenirsVendidos",(req,res)=>{
 });
 
 //APi para realizar el monto a la habitación de hotel. TIENDA => HOTEL
-//Discutir con el taquitos sobre esta api
-//Discutir con los pibes sobre la id de venta y guardarla en local.
-router.get ("/MontoServicioHabitacion/:idVenta",(req,res)=>{
-    //Ahorita solo usamos esa id como prueba pero en el desarrollo mas adelante
-    //Se va a cambiar
+router.get("/MontoServicioHabitacion/:idVenta",(req,res)=>{
     const {idVenta}=req.params;
     let idVentax= idVenta||1;
     mysqlConnection.query(`SELECT envioshotel.nombreDest,envioshotel.nHabitacion,venta.total FROM envioshotel,venta WHERE venta.idVenta=${idVentax}`,
     (err,rows,fields)=>{
       
         if(!err){
+            // axios.get("url")
+            // .then(data=>{
+
+            // })
+            // .catch(error=>{
+
+            // })
             res.json(rows);
+            console.log(rows[0].nombreDest);
+            // axios.post("url",envio)
+            // .then(data=>{
+            //     console.log(envio);
+            // })
+            // .catch(error=>{
+            //     res.status(500).send({
+            //         message:  "Ocurrio un error con el servidor"
+            //     })
+            // });
         }else{
             res.json({
                 mensaje:"Ocurrio un error, favor de verificar los datos"
             });
         }
     });
+
 });
 
 
@@ -154,6 +168,16 @@ router.get("/PromocionesTR/:id",(req,res)=>{
     mysqlConnection.query(`SELECT idProducto,precio,descripcion FROM productos WHERE idProducto= ${idProducto}`,(err,rows,fields)=>{
         if(!err){
             res.json(rows);
+            console.log(rows[0].precio);
+            // axios.post("url",envio)
+            // .then(data=>{
+            //     console.log(envio);
+            // })
+            // .catch(error=>{
+            //     res.status(500).send({
+            //         message:  "Ocurrio un error con el servidor"
+            //     })
+            // });
         }else {
             res.json({
                 mensaje:"Ocurrio un error, favor de introducir bien el id de producto"
