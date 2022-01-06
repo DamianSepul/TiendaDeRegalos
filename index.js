@@ -25,13 +25,20 @@ app.use(express.json());
 
 //Routes, distintas rutas que tomara el sitio web
 app.use("/api",require("./routes/apis.js"));
+
+app.use("/ventas",require("./routes/ventas.js"));
+
 app.use("/productos",require("./routes/productos.js"));
+
 //Rutas frontEnd
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/index.html"));
 });
 app.get("/login.html",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/login.html"));
+});
+app.get("/ventas.html",(req,res)=>{
+    res.sendFile(path.join(__dirname,"views/ventas.html"));
 });
 
 //Rutas del Dashboard
