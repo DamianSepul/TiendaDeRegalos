@@ -55,7 +55,7 @@ on(document, 'click', '.btnBorrar', e => {
     const id = fila.firstElementChild.innerHTML
     alertify.confirm("This is a confirm dialog.",
         function () {
-            fetch('http://localhost:3000/productos/' + id, {
+            fetch(url + id, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -110,7 +110,7 @@ formArticulo.addEventListener('submit', (e) => {
         
     }
     if (opcion == 'editar') {
-        fetch('http://localhost:3000/productos/'+idForm, {
+        fetch(url+idForm, {
             method:'PUT',
             headers: {
                 'Content-Type': 'application/json'

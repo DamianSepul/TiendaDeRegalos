@@ -36,8 +36,8 @@ app.get("/login.html",(req,res)=>{
 });
 
 //Rutas del Dashboard
-    app.get("/dashboard",(req,res)=>{
-        res.sendFile(path.join(__dirname,"views/dashboard/Index.html"));
+    app.get("/dashboard2",(req,res)=>{
+        res.sendFile(path.join(__dirname,"views/dashboard/.html"));
     });
     app.get("/agregar",(req,res)=>{
         res.sendFile(path.join(__dirname,"views/dashboard/Agregar.html"));
@@ -48,7 +48,7 @@ app.get("/login.html",(req,res)=>{
     app.get("/eliminar",(req,res)=>{
         res.sendFile(path.join(__dirname,"views/dashboard/Eliminar.html"));
     });
-    app.get("/crud",(req,res)=>{
+    app.get("/dashboard",(req,res)=>{
         res.sendFile(path.join(__dirname,"views/dashboard/PruebaCrud.html"));
     });
 //Empezar el servidor a funcionar en el puerto asignado
