@@ -136,7 +136,7 @@ router.get("/MontoServicioHabitacion/:idVenta",(req,res)=>{
                         const envioHotel={
                                 ammount:rows[0].total,
                                 room:rows[0].nHabitacion,
-                                description: "Prueba tienda de regalos",
+                                description: "Prueba tienda de regalos clase",
                                 payed:0
                         }
             axios.post("https://hotel-deerland.herokuapp.com/api/auth/services/store",envioHotel)
