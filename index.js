@@ -32,6 +32,8 @@ app.use("/productos",require("./routes/productos.js"));
 
 app.use("/envios",require("./routes/envios.js"));
 
+app.use("/promociones",require("./routes/promociones"));
+
 //Rutas frontEnd
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/index.html"));
@@ -52,6 +54,9 @@ app.get("/realizarVenta",(req,res)=>{
     });
     app.get("/db-envios",(req,res)=>{
         res.sendFile(path.join(__dirname,"views/dashboard/Envios.html"));
+    });
+    app.get("/db-promociones",(req,res)=>{
+        res.sendFile(path.join(__dirname,"views/dashboard/Promociones.html"));
     });
 //Empezar el servidor a funcionar en el puerto asignado
 app.listen(app.get("port"),()=>{
