@@ -30,6 +30,8 @@ app.use("/ventas",require("./routes/ventas.js"));
 
 app.use("/productos",require("./routes/productos.js"));
 
+app.use("/envios",require("./routes/envios.js"));
+
 //Rutas frontEnd
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/index.html"));
