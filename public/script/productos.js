@@ -29,7 +29,7 @@ const mostrar = (productos) => {
                             <td>${producto.descripcion}</td>
                             <td>${producto.precio}</td>
                             <td>${producto.stock}</td>
-                            <td>Imagen</td>
+                            <td>${producto.imagen}</td>
                             <td class="text-center"><a class="btnEditar btn btn-primary"><i class="bi bi-pencil"></i> Editar</a> <a class="btnBorrar btn btn-danger"><i class="bi bi-x-lg"></i> Borrar</a></td>
                        </tr>
                     `

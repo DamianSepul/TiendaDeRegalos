@@ -37,7 +37,7 @@ app.get("/",(req,res)=>{
 app.get("/login.html",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/login.html"));
 });
-app.get("/ventas.html",(req,res)=>{
+app.get("/realizarVenta",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/ventas.html"));
 });
 
@@ -47,6 +47,9 @@ app.get("/ventas.html",(req,res)=>{
     });
     app.get("/db-ventas",(req,res)=>{
         res.sendFile(path.join(__dirname,"views/dashboard/Ventas.html"));
+    });
+    app.get("/db-envios",(req,res)=>{
+        res.sendFile(path.join(__dirname,"views/dashboard/Envios.html"));
     });
 //Empezar el servidor a funcionar en el puerto asignado
 app.listen(app.get("port"),()=>{

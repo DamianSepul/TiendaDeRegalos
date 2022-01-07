@@ -73,7 +73,17 @@ router.post("/AgregarEnvioHotel/:idVenta",(req,res)=>{
     });
 });
 
-
+router.get("/", (req, res) => {
+    mysqlConnection.query("SELECT * FROM venta", (err, rows, fields) => {
+        if (!err) {
+            res.json(rows)
+        } else {
+            res.json({
+                mensaje: "Error al mostrar los productos"
+            });
+        }
+    });
+});
 
 
 
