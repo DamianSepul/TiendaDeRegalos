@@ -3,6 +3,7 @@ const contenedor = document.querySelector('tbody')
 let resultados = ''
 
 const modalProductos = new bootstrap.Modal(document.getElementById('modalProducto'))
+const modalImagenes = new bootstrap.Modal(document.getElementById('modalImagen'))
 const formArticulo = document.querySelector('form')
 const nombre = document.getElementById('nombre')
 const descripcion = document.getElementById('descripcion')
@@ -29,7 +30,8 @@ const mostrar = (productos) => {
                             <td>${producto.descripcion}</td>
                             <td>${producto.precio}</td>
                             <td>${producto.stock}</td>
-                            <td>${producto.imagen}</td>
+                            <td>${producto.imagen} 
+                            <a class="btnImagen btn btn-primary"> Imagen</a></td>
                             <td class="text-center"><a class="btnEditar btn btn-primary"><i class="bi bi-pencil"></i> Editar</a> <a class="btnBorrar btn btn-danger"><i class="bi bi-x-lg"></i> Borrar</a></td>
                        </tr>
                     `
@@ -53,9 +55,9 @@ const on = (element, event, selector, handler) => {
 on(document, 'click', '.btnBorrar', e => {
     const fila = e.target.parentNode.parentNode
     const id = fila.firstElementChild.innerHTML
-    alertify.confirm("This is a confirm dialog.",
+    alertify.confirm("Seguro que desea eliminar este producto?",
         function () {
-            fetch(url + id, {
+            fetch(url +"Borrar/"+id, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -84,6 +86,13 @@ on(document, 'click', '.btnEditar', e => {
     modalProductos.show()
 })
 
+on(document, 'click', '.btnImagen', e => {
+    const fila = e.target.parentNode.parentNode
+    idForm = fila.children[0].innerHTML
+    modalImagenes.show()
+    opcion = 'Imagen'
+})
+
 //Procedimiento crear y editar
 
 formArticulo.addEventListener('submit', (e) => {
@@ -107,10 +116,10 @@ formArticulo.addEventListener('submit', (e) => {
                 nuevoProducto.push(data)
                 mostrar(nuevoProducto)
             })
-        
+            .then(response => location.reload())
     }
     if (opcion == 'editar') {
-        fetch(url+idForm, {
+        fetch(url+"Editar/"+idForm, {
             method:'PUT',
             headers: {
                 'Content-Type': 'application/json'

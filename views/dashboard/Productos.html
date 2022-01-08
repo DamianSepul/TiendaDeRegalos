@@ -124,13 +124,36 @@
                                     <input id="stock" type="number" class="form-control">
                                 </div>
                                 <div class="mb-3 custom-file">
-                                    <label for="imagen" class="custom-file-label">Imagen:</label>
-                                    <input id="imagen" type="file" class="form-control custom-file-input">
+                                    <label for="imagenxx" class="custom-file-label">Imagen:</label>
+                                    <input id="imagenxx" type="file" class="form-control custom-file-input">
                                 </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="modalImagen" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary text-white">
+                            <h5 class="modal-title">Imagen</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/Productos/upload/" method="post" enctype="multipart/form-data">
+                                <div class="mb-3 custom-file">
+                                    <label for="imagen" class="custom-file-label">Imagen:</label>
+                                    <input name="imagen" id="imagen" type="file" class="form-control custom-file-input">
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button value="Enviar" type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                         </form>
                     </div>
