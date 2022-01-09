@@ -108,9 +108,9 @@ router.get("/ProductoTiendaDeRegalo",(req,res)=>{
 router.post("/SouvenirsVendidos",(req,res)=>{
     const {NumVenta,idProducto,idTransaccion,numTransaccion,numTarjeta,FechaV,idCliente,total,cantidad}=req.body;
     mysqlConnection.query(`
-    INSERT INTO transacciones VALUES ('${idTransaccion}','${numTransaccion}','Completada');
-    INSERT INTO venta  VALUES ('${NumVenta}', '${FechaV}', '${numTarjeta}', 'Central', '${idCliente}', '${idTransaccion}', '${total}');
-    INSERT INTO ventadetalle (cantidad, precio, idProducto, idVenta)  VALUES ('${cantidad}','${total}','${idProducto}', '${NumVenta}');
+    INSERT INTO transacciones (numTransaccion, estado) VALUES ('${numTransaccion}','Completada');
+    INSERT INTO venta (fecha,numTarjeta,tipoVenta,idCliente,idTransaccion,total)  VALUES ('${FechaV}', '${numTarjeta}', 'Central', '${idCliente}', last_insert_id(), '${total}');
+    INSERT INTO ventadetalle (cantidad, precio, idProducto, idVenta)  VALUES ('${cantidad}','${total}','${idProducto}', last_insert_id());
     UPDATE productos SET stock = stock-${cantidad} WHERE idProducto = ${idProducto}
     `,
     (err,rows,fields)=>{
