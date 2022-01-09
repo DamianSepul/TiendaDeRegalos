@@ -20,5 +20,15 @@ router.get("/", (req, res) => {
     });
 });
 
+router.delete("/Borrar/:id", (req, res) => {
+    const { id } = req.body;
+    mysqlConnection.query("DELETE FROM envioshotel WHERE idEnvio = ?", [req.params.id], function (err, rows) {
+        if (err) {
+            throw err
+        } else {
+            res.send(rows)
+        }
+    })
+})
 
 module.exports=router;

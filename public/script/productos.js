@@ -25,7 +25,7 @@ btnCrear.addEventListener('click', () => {
 //Funcion
 const mostrar = (productos) => {
     productos.forEach(producto => {
-        resultados += `<tr>
+        resultados += `<tr class="text-center">
                             <td>${producto.idProducto}</td>
                             <td>${producto.nombre}</td>
                             <td>${producto.descripcion}</td>
@@ -64,10 +64,10 @@ on(document, 'click', '.btnBorrar', e => {
             })
                 .then(res => res.json())
                 .then(() => location.reload())
-            //alertify.success('Ok')
+            alertify.success('Ok')
         },
         function () {
-            alertify.error('Cancel')
+            alertify.error('Cancelado')
         });
 })
 

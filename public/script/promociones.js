@@ -4,7 +4,7 @@ let resultados = ''
 
 const mostrar = (promociones) => {
     promociones.forEach(promocion => {
-        resultados += `<tr>
+        resultados += `<tr class="text-center">
                             <td>${promocion.idProducto}</td>
                             <td>${promocion.descuentoPromo}</td>
                             <td>${promocion.fechaVenci}</td>

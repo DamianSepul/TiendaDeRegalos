@@ -20,7 +20,7 @@ const hora = document.getElementById('hora')
 let idVentaEnvio = 0
 const mostrar = (ventas) => {
     ventas.forEach(venta => {
-        resultados += `<tr>
+        resultados += `<tr class="text-center">
                             <td>${venta.idVenta}</td>
                             <td>${venta.fecha}</td>
                             <td>${venta.numTarjeta}</td>
