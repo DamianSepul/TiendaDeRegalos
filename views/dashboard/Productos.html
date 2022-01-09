@@ -106,7 +106,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form id="FormModal">
                                 <div class="mb-3">
                                     <label for="nombre" class="col-form-label">Nombre:</label>
                                     <input id="nombre" type="text" class="form-control">
@@ -122,10 +122,6 @@
                                 <div class="mb-3">
                                     <label for="stock" class="col-form-label">Stock:</label>
                                     <input id="stock" type="number" class="form-control">
-                                </div>
-                                <div class="mb-3 custom-file">
-                                    <label for="imagenxx" class="custom-file-label">Imagen:</label>
-                                    <input id="imagenxx" type="file" class="form-control custom-file-input">
                                 </div>
                         </div>
                         <div class="modal-footer">
@@ -145,7 +141,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="/Productos/upload/" method="post" enctype="multipart/form-data">
+                            <form id="FormImagen" action="/Productos/upload/" method="post" enctype="multipart/form-data">
                                 <div class="mb-3 custom-file">
                                     <label for="imagen" class="custom-file-label">Imagen:</label>
                                     <input name="imagen" id="imagen" type="file" class="form-control custom-file-input">

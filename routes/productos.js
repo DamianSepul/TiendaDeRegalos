@@ -24,10 +24,23 @@ router.get("/", (req, res) => {
         }
     });
 });
+let ImagePath = ''
+router.post('/upload', upload.single('imagen'),(req,res) =>{
+    ImagePath = req.file.path + '.' + req.file.mimetype.split('/')[1]
+    fs.renameSync(req.file.path,ImagePath)
+    //res.send(ImagePath)
+})
 
-router.post('/upload', upload.single('imagen'),(req,res) =>{  
-    fs.renameSync(req.file.path,req.file.path + '.' + req.file.mimetype.split('/')[1])
-    res.send('Archivo subido con exito')
+router.put('/EditImagen/:id', (req, res) => {
+    let id = req.params.id
+    let sql = 'UPDATE Productos SET images = ? WHERE idProducto = ?'
+    mysqlConnection.query(sql, [ImagePath, id], function (err, results) {
+        if (err) {
+            throw err
+        } else {
+            res.send(results)
+        }
+    })
 })
 
 /*router.get("/SelectoUnProducto:id"), (req, res) => {

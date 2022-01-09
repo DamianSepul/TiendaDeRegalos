@@ -4,7 +4,8 @@ let resultados = ''
 
 const modalProductos = new bootstrap.Modal(document.getElementById('modalProducto'))
 const modalImagenes = new bootstrap.Modal(document.getElementById('modalImagen'))
-const formArticulo = document.querySelector('form')
+const formArticulo = document.getElementById('FormModal')
+const formImagen = document.getElementById('FormImagen')
 const nombre = document.getElementById('nombre')
 const descripcion = document.getElementById('descripcion')
 const precio = document.getElementById('precio')
@@ -30,8 +31,9 @@ const mostrar = (productos) => {
                             <td>${producto.descripcion}</td>
                             <td>${producto.precio}</td>
                             <td>${producto.stock}</td>
-                            <td>${producto.imagen} 
-                            <a class="btnImagen btn btn-primary"> Imagen</a></td>
+                            <td>
+                                <img src="http://localhost:3000/${producto.images}" class="img-thumbnail" width="100px" alt="...">
+                                <a class="btnImagen btn btn-primary"> Imagen</a></td>
                             <td class="text-center"><a class="btnEditar btn btn-primary"><i class="bi bi-pencil"></i> Editar</a> <a class="btnBorrar btn btn-danger"><i class="bi bi-x-lg"></i> Borrar</a></td>
                        </tr>
                     `
@@ -90,13 +92,24 @@ on(document, 'click', '.btnImagen', e => {
     const fila = e.target.parentNode.parentNode
     idForm = fila.children[0].innerHTML
     modalImagenes.show()
-    opcion = 'Imagen'
+    opcion = 'imagen'
 })
 
 //Procedimiento crear y editar
 
+formImagen.addEventListener('submit', (e) =>{
+    if (opcion == 'imagen'){
+        fetch(url+"EditImagen/"+idForm, {
+            method:'PUT'
+        })
+        .then(response => response.json())
+        .then(response => location.reload())
+    }
+})
+
 formArticulo.addEventListener('submit', (e) => {
     e.preventDefault()
+    
     if (opcion == 'crear') {
         fetch('http://localhost:3000/productos/AgregarProducto', {
             method:'POST',
