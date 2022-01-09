@@ -46,6 +46,7 @@ h1#prod_title{
     border: 1px solid #bdbdbd;
     background-color: #ffff;
     padding: 20px;
+    margin: 10px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
