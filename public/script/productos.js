@@ -3,7 +3,9 @@ const contenedor = document.querySelector('tbody')
 let resultados = ''
 
 const modalProductos = new bootstrap.Modal(document.getElementById('modalProducto'))
-const formArticulo = document.querySelector('form')
+const modalImagenes = new bootstrap.Modal(document.getElementById('modalImagen'))
+const formArticulo = document.getElementById('FormModal')
+const formImagen = document.getElementById('FormImagen')
 const nombre = document.getElementById('nombre')
 const descripcion = document.getElementById('descripcion')
 const precio = document.getElementById('precio')
@@ -29,7 +31,9 @@ const mostrar = (productos) => {
                             <td>${producto.descripcion}</td>
                             <td>${producto.precio}</td>
                             <td>${producto.stock}</td>
-                            <td>Imagen</td>
+                            <td>
+                                <img src="http://localhost:3000/${producto.images}" class="img-thumbnail" width="100px" alt="...">
+                                <a class="btnImagen btn btn-primary">Cambiar</a></td>
                             <td class="text-center"><a class="btnEditar btn btn-primary"><i class="bi bi-pencil"></i> Editar</a> <a class="btnBorrar btn btn-danger"><i class="bi bi-x-lg"></i> Borrar</a></td>
                        </tr>
                     `
@@ -53,9 +57,9 @@ const on = (element, event, selector, handler) => {
 on(document, 'click', '.btnBorrar', e => {
     const fila = e.target.parentNode.parentNode
     const id = fila.firstElementChild.innerHTML
-    alertify.confirm("This is a confirm dialog.",
+    alertify.confirm("Seguro que desea eliminar este producto?",
         function () {
-            fetch('http://localhost:3000/productos/' + id, {
+            fetch(url +"Borrar/"+id, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -84,10 +88,28 @@ on(document, 'click', '.btnEditar', e => {
     modalProductos.show()
 })
 
+on(document, 'click', '.btnImagen', e => {
+    const fila = e.target.parentNode.parentNode
+    idForm = fila.children[0].innerHTML
+    modalImagenes.show()
+    opcion = 'imagen'
+})
+
 //Procedimiento crear y editar
+
+formImagen.addEventListener('submit', (e) =>{
+    if (opcion == 'imagen'){
+        fetch(url+"EditImagen/"+idForm, {
+            method:'PUT'
+        })
+        .then(response => response.json())
+        .then(response => location.reload())
+    }
+})
 
 formArticulo.addEventListener('submit', (e) => {
     e.preventDefault()
+    
     if (opcion == 'crear') {
         fetch('http://localhost:3000/productos/AgregarProducto', {
             method:'POST',
@@ -107,10 +129,10 @@ formArticulo.addEventListener('submit', (e) => {
                 nuevoProducto.push(data)
                 mostrar(nuevoProducto)
             })
-        
+            .then(response => location.reload())
     }
     if (opcion == 'editar') {
-        fetch('http://localhost:3000/productos/'+idForm, {
+        fetch(url+"Editar/"+idForm, {
             method:'PUT',
             headers: {
                 'Content-Type': 'application/json'
