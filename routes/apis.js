@@ -129,16 +129,14 @@ router.get("/MontoServicioHabitacion/:idVenta",(req,res)=>{
     let idVentax= idVenta||1;
     mysqlConnection.query(`SELECT envioshotel.nombreDest,envioshotel.nHabitacion,venta.total FROM envioshotel,venta WHERE venta.idVenta=${idVentax}`,
     (err,rows,fields)=>{
-      
-        
         if(!err){
             console.log(rows[0]);
-                        const envioHotel={
-                                ammount:rows[0].total,
-                                room:rows[0].nHabitacion,
-                                description: "Prueba tienda de regalos",
-                                payed:0
-                        }
+            const envioHotel={
+                ammount:rows[0].total,
+                room:rows[0].nHabitacion,
+                description: "Prueba tienda de regalos clase",
+                payed:0
+            }
             axios.post("https://hotel-deerland.herokuapp.com/api/auth/services/store",envioHotel)
             .then(data=>{
 
