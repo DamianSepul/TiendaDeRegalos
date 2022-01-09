@@ -50,6 +50,42 @@
                 </li>
             </ul>
         </div>
+        
+        <div id="modalEnvio" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary text-white">
+                            <h5 class="modal-title">Envio a Hotel</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formEnviar">
+                                <div class="mb-3">
+                                    <label for="habitacion" class="col-form-label">Habitacion:</label>
+                                    <input id="habitacion" type="text" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="destinatario" class="col-form-label">Destinatario:</label>
+                                    <input id="destinatario" type="text" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="fecha" class="col-form-label">Fecha:</label>
+                                    <input id="fecha" type="date" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="hora" class="col-form-label">Hora:</label>
+                                    <input id="hora" type="time" class="form-control" required>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         <!--Main-->
         <div class="db-main">
             <div class="db-topbar">
