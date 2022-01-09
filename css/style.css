@@ -1,5 +1,167 @@
-/*
+body{ 
+    background-color:#e0e0e0; 
+}
 
-    Aqui se añadirian los estilos que tendrian el sitio web 
+.title{
+    background-color: #ff933a;
+    width: 100%;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
 
-*/
+.store_items{
+    background-color: rgb(255, 255, 255);
+    width: 75%;
+    height: 650px;
+    margin-top: 0%;
+    float: left;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+h1#prod_title{
+    font-family: 'Amaranth', sans-serif;
+    font-family: 'Lato', sans-serif;
+    text-align: left;
+    color: #141414;
+    font-size: 30px;
+    padding-left: 50px;
+    border-bottom: 1px solid #bdbdbd;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.product_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.product_box{
+    width: 180px;
+    border: 1px solid #bdbdbd;
+    background-color: #ffff;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product_box img{
+    width: 90%;
+    height: 180px;
+    object-fit: contain;
+    object-position: center;
+    margin: auto;
+}
+
+.product_box strong{
+    color: #0c0c0c;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.product_box .price{
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #202020;
+
+}
+
+.product_box .cart_btn{
+    width: 100%;
+    height: 40px;
+    background-color: #ff933a;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    transition: all ease 0.3s;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.product_box .cart_btn i{
+    margin-right: 10px;
+}
+
+.product_box .cart_btn:hover{
+    background-color: #ffddaa;
+    color: #ffff;
+    transition: all ease 0.3s;
+}
+
+.shoping_cart{
+    background-color: rgb(255, 255, 255);
+    margin-left: .5%;
+    width: 24.5%;
+    height: 650px;
+    float: right;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    text-emphasis-position: top;
+}
+
+h1#cart_title{
+    font-family: 'Amaranth', sans-serif;
+    font-family: 'Lato', sans-serif;
+    color: #141414;
+    font-size: 30px;
+    padding-left: 50px;
+}
+
+.shoping_cart .shoping_box{
+    width: 80%;
+    height: 70%;
+    border-top: 1px solid #bdbdbd;
+    border-bottom: 1px solid #bdbdbd;
+    background-color: #ffff;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shoping_cart .shop_btn{
+    width: 60%;
+    height: 40px;
+    background-color: #ff933a;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    transition: all ease 0.3s;
+    border-radius: 10px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.shoping_cart .shop_btn i{
+    margin-left: 15px;
+}
+
+.shoping_cart .shop_btn:hover{
+    background-color: #ffddaa;
+    color: #ffff;
+    transition: all ease 0.3s;
+}
+
+.shoping_cart .total{
+    width: 80%;
+    margin-top: 5px;
+    justify-content: center;
+    display: flex;
+    font-size: 25px;
+    letter-spacing: 1px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
