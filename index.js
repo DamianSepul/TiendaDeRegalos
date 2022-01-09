@@ -30,33 +30,33 @@ app.use("/ventas",require("./routes/ventas.js"));
 
 app.use("/productos",require("./routes/productos.js"));
 
+app.use("/envios",require("./routes/envios.js"));
+
+app.use("/promociones",require("./routes/promociones"));
+
+//Rutas frontEnd
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/index.html"));
 });
-
-
 app.get("/login.html",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/login.html"));
 });
-app.get("/ventas.html",(req,res)=>{
+app.get("/realizarVenta",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/ventas.html"));
 });
 
 //Rutas del Dashboard
-    app.get("/dashboard",(req,res)=>{
-        res.sendFile(path.join(__dirname,"views/dashboard/Index.html"));
+    app.get("/db-productos",(req,res)=>{
+        res.sendFile(path.join(__dirname,"views/dashboard/Productos.html"));
     });
-    app.get("/agregar",(req,res)=>{
-        res.sendFile(path.join(__dirname,"views/dashboard/Agregar.html"));
+    app.get("/db-ventas",(req,res)=>{
+        res.sendFile(path.join(__dirname,"views/dashboard/Ventas.html"));
     });
-    app.get("/editar",(req,res)=>{
-        res.sendFile(path.join(__dirname,"views/dashboard/Editar.html"));
+    app.get("/db-envios",(req,res)=>{
+        res.sendFile(path.join(__dirname,"views/dashboard/Envios.html"));
     });
-    app.get("/eliminar",(req,res)=>{
-        res.sendFile(path.join(__dirname,"views/dashboard/Eliminar.html"));
-    });
-    app.get("/crud",(req,res)=>{
-        res.sendFile(path.join(__dirname,"views/dashboard/PruebaCrud.html"));
+    app.get("/db-promociones",(req,res)=>{
+        res.sendFile(path.join(__dirname,"views/dashboard/Promociones.html"));
     });
 //Empezar el servidor a funcionar en el puerto asignado
 app.listen(app.get("port"),()=>{

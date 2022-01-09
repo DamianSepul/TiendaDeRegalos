@@ -8,6 +8,11 @@ const { response } = require('express')
 const { url } = require('inspector')
 const { header } = require('express/lib/request')
 
+const fs = require ('fs')
+const multer = require('multer')
+const { DATETIME } = require('mysql/lib/protocol/constants/types')
+const upload = multer({dest: 'public/images/productos'})
+
 router.get("/", (req, res) => {
     mysqlConnection.query("SELECT * FROM productos", (err, rows, fields) => {
         if (!err) {
@@ -19,6 +24,24 @@ router.get("/", (req, res) => {
         }
     });
 });
+let ImagePath = ''
+router.post('/upload', upload.single('imagen'),(req,res) =>{
+    ImagePath = req.file.path + '.' + req.file.mimetype.split('/')[1]
+    fs.renameSync(req.file.path,ImagePath)
+    //res.send(ImagePath)
+})
+
+router.put('/EditImagen/:id', (req, res) => {
+    let id = req.params.id
+    let sql = 'UPDATE Productos SET images = ? WHERE idProducto = ?'
+    mysqlConnection.query(sql, [ImagePath, id], function (err, results) {
+        if (err) {
+            throw err
+        } else {
+            res.send(results)
+        }
+    })
+})
 
 /*router.get("/SelectoUnProducto:id"), (req, res) => {
     mysqlConnection.query("SELECT * FROM productos WHERE id = ?"), [req.params.id], (err, rows) => {
@@ -45,7 +68,7 @@ router.post("/AgregarProducto", (req, res) => {
     })
 })
 
-router.put("/:id", (req, res) => {
+router.put("/Editar/:id", (req, res) => {
     let id = req.params.id
     let nombre = req.body.nombre
     let descripcion = req.body.descripcion
@@ -62,7 +85,7 @@ router.put("/:id", (req, res) => {
     })
 })
 
-router.delete("/:id", (req, res) => {
+router.delete("/Borrar/:id", (req, res) => {
     const { id } = req.body;
     mysqlConnection.query("DELETE FROM productos WHERE idProducto = ?", [req.params.id], function (err, rows) {
         if (err) {
