@@ -24,8 +24,8 @@ body{
 
 .store_items{
     background-color: rgb(255, 255, 255);
-    width: 75%;
-    height: 650px;
+    width: 50%;
+    height: 100%;
     margin-top: 0%;
     float: left;
     border-radius: 5px;
@@ -117,8 +117,9 @@ h1#prod_title{
 .shoping_cart{
     background-color: rgb(255, 255, 255);
     margin-left: .5%;
-    width: 24.5%;
-    height: 650px;
+    width: 49%;
+    padding-bottom: 15px;
+    height: 100%;
     float: right;
     border-radius: 5px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);

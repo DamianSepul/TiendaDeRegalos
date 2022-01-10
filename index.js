@@ -34,6 +34,8 @@ app.use("/envios",require("./routes/envios.js"));
 
 app.use("/promociones",require("./routes/promociones"));
 
+app.use("/carrito",require("./routes/carrito"));
+
 //Rutas frontEnd
 app.get("/",(req,res)=>{
     res.sendFile(path.join(__dirname,"views/index.html"));
