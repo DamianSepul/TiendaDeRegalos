@@ -8,6 +8,7 @@ const mostrar = (productos) => {
                             <img src="http://localhost:3000/${producto.images}" class="img-thumbnail" width="150px">
                             <strong>${producto.nombre}</strong>
                             <span class="price">${producto.precio}</span>
+                            <input type="number" class="form-control" value="1" min="1">
                             <button class="cart_btn">
                                 <i class="fas fa-cart-plus"></i> Añadir al carrito
                             </button>
