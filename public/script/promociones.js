@@ -1,4 +1,5 @@
-const url = 'http://localhost:3000/promociones/'
+//const url = 'http://localhost:3000/'
+const url = 'https://tienda-de-regalos-deerland.herokuapp.com/'
 const contenedor = document.querySelector('tbody')
 let resultados = ''
 
@@ -14,7 +15,7 @@ const mostrar = (promociones) => {
     contenedor.innerHTML = resultados
 }
 
-fetch(url)
+fetch(url+'promociones')
     .then(response => response.json())
     .then(data => mostrar(data))
     .catch(error => console.log(error))

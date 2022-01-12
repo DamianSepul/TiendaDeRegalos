@@ -1,4 +1,5 @@
-const url = 'http://localhost:3000/productos/'
+//const url = 'http://localhost:3000/'
+const url = 'https://tienda-de-regalos-deerland.herokuapp.com/'
 const contenedor = document.getElementById('productContainer')
 const tablaProductos = document.getElementById('tablaProductos')
 const tablaCarrito = document.getElementById('tablaCarrito')
@@ -51,12 +52,12 @@ const mostrar2 = (carritos) => {
     tablaCarrito.innerHTML = resultados2
 }
 
-fetch(url)
+fetch(url+'productos')
     .then(response => response.json())
     .then(data => mostrar(data))
     .catch(error => console.log(error))
 
-fetch('http://localhost:3000/carrito')
+fetch(url+'carrito')
     .then(response => response.json())
     .then(data => mostrar2(data))
     .catch(error => console.log(error))
@@ -74,7 +75,7 @@ on(document, 'click', '.btnBorrar', e => {
     const id = fila.firstElementChild.innerHTML
     alertify.confirm("Seguro que desea eliminar este producto?",
         function () {
-            fetch("http://localhost:3000/carrito/Borrar/"+id, {
+            fetch(url+"carrito/Borrar/"+id, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -89,7 +90,7 @@ on(document, 'click', '.btnBorrar', e => {
 //Agregar al carrito
 on(document, 'click', '.btnAgregar', e => {
     const fila = e.target.parentNode.parentNode.firstElementChild.innerHTML
-    fetch('http://localhost:3000/ventas/AgregarCarrito/'+fila, {
+    fetch(url+'ventas/AgregarCarrito/'+fila, {
         method: 'POST'
     })
         .then(response => response.json())

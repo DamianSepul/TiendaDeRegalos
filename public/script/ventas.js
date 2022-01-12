@@ -1,4 +1,5 @@
-const url = 'http://localhost:3000/ventas/'
+//const url = 'http://localhost:3000/'
+const url = 'https://tienda-de-regalos-deerland.herokuapp.com/'
 const contenedor = document.querySelector('tbody')
 let resultados = ''
 const modalEnvios = new bootstrap.Modal(document.getElementById('modalEnvio'))
@@ -35,7 +36,7 @@ const mostrar = (ventas) => {
     contenedor.innerHTML = resultados
 }
 
-fetch(url)
+fetch(url+'ventas')
     .then(response => response.json())
     .then(data => mostrar(data))
     .catch(error => console.log(error))
@@ -56,7 +57,7 @@ on(document, 'click', '.btnEnviar', e => {
 
 formEnviar.addEventListener('submit', (e) => {
     e.preventDefault()
-    fetch(url+'AgregarEnvioHotel/'+idVentaEnvio, {
+    fetch(url+'ventas/AgregarEnvioHotel/'+idVentaEnvio, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -67,7 +68,7 @@ formEnviar.addEventListener('submit', (e) => {
             fechaEnvio: fecha.value,
             horaEnvio: hora.value
         })
-    })
+    })  
         .then(response => response.json())
         .then(data => {
             const nuevoProducto = []

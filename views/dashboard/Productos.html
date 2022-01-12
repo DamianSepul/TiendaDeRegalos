@@ -107,28 +107,74 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="FormModal">
+                            <form id="FormModal" action="/Productos/prueba" method="post" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label for="nombre" class="col-form-label">Nombre:</label>
-                                    <input id="nombre" type="text" class="form-control" required>
+                                    <input id="nombre" name="nombre" type="text" class="form-control" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="descripcion" class="col-form-label">Descripion:</label>
-                                    <input id="descripcion" type="text" class="form-control" required>
+                                    <input id="descripcion" name="descripcion" type="text" class="form-control" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="precio" class="col-form-label">Precio:</label>
-                                    <input id="precio" type="number" class="form-control" required>
+                                    <input id="precio" name="precio" type="number" class="form-control" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="stock" class="col-form-label">Stock:</label>
-                                    <input id="stock" type="number" class="form-control" required>
+                                    <input id="stock" name="stock" type="number" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="imagen" class="col-form-label">Imagen:</label>
+                                    <input id="imagen" name="imagen" type="file" class="form-control" required>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="modalEditar" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary text-white">
+                            <h5 class="modal-title" id="exampleModalLabel">Articulo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                        <div class="modal-body">
+                            <form id="FormModal" action="/Productos/EditarProducto" method="post" enctype="multipart/form-data">
+                                <input id="getId" name="getId" type="hidden" class="form-control" required>
+                                <div class="mb-3">
+                                    <label for="nombre" class="col-form-label">Nombre:</label>
+                                    <input id="nombreEditar" name="nombre" type="text" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="descripcion" class="col-form-label">Descripion:</label>
+                                    <input id="descripcionEditar" name="descripcion" type="text" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="precio" class="col-form-label">Precio:</label>
+                                    <input id="precioEditar" name="precio" type="number" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="stock" class="col-form-label">Stock:</label>
+                                    <input id="stockEditar" name="stock" type="number" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="imagen" class="col-form-label">Imagen:</label>
+                                    <input id="imagenEditar" name="imagen" type="file" class="form-control" required>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+                        </div>
+                        
                         </form>
                     </div>
                 </div>

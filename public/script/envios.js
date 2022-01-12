@@ -1,4 +1,5 @@
-const url = 'http://localhost:3000/envios/'
+//const url = 'http://localhost:3000/'
+const url = 'https://tienda-de-regalos-deerland.herokuapp.com/'
 const contenedor = document.querySelector('tbody')
 let resultados = ''
 
@@ -18,7 +19,7 @@ const mostrar = (envios) => {
     contenedor.innerHTML = resultados
 }
 
-fetch(url)
+fetch(url+'envios')
     .then(response => response.json())
     .then(data => mostrar(data))
     .catch(error => console.log(error))
@@ -37,7 +38,7 @@ on(document, 'click', '.btnBorrar', e => {
     const id = fila.firstElementChild.innerHTML
     alertify.confirm("Eliminar envio?",
         function () {
-            fetch(url +"Borrar/"+id, {
+            fetch(url +"envios/Borrar/"+id, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
