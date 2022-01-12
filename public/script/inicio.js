@@ -26,7 +26,7 @@ const mostrar = (productos) => {
     productos.forEach(producto => {
         resultados += ` <tr class="text-center">
                                 <td style="display:none">${producto.idProducto}</td>
-                                <td><img src="http://localhost:3000/${producto.images}" class="img-thumbnail" width="150px"></td>
+                                <td><img src="${url + producto.images}" class="img-thumbnail" width="150px"></td>
                                 <td>${producto.nombre}</td>
                                 <td><input id="inputCantidad" type="number" class="form-control" value="1" min="1"></td>
                                 <td> $${producto.precio}</td>
