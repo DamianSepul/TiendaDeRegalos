@@ -9,7 +9,8 @@ const { url } = require('inspector');
 const { header } = require('express/lib/request');
 
 router.get("/", (req, res) => {
-    mysqlConnection.query("SELECT * FROM enviosHotel", (err, rows, fields) => {
+    let id = req.params.id
+    mysqlConnection.query("SELECT * FROM carrito, productos where carrito.idProducto = productos.idProducto", (err, rows, fields) => {
         if (!err) {
             res.json(rows)
         } else {
@@ -22,7 +23,7 @@ router.get("/", (req, res) => {
 
 router.delete("/Borrar/:id", (req, res) => {
     const { id } = req.body;
-    mysqlConnection.query("DELETE FROM envioshotel WHERE idEnvio = ?", [req.params.id], function (err, rows) {
+    mysqlConnection.query("DELETE FROM carrito WHERE idCarrito = ?", [req.params.id], function (err, rows) {
         if (err) {
             throw err
         } else {

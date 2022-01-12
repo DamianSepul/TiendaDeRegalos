@@ -1,16 +1,24 @@
-const url = 'http://localhost:3000/productos/'
+//const url = 'http://localhost:3000/'
+const url = 'https://tienda-de-regalos-deerland.herokuapp.com/'
 const contenedor = document.querySelector('tbody')
 let resultados = ''
 
 const modalProductos = new bootstrap.Modal(document.getElementById('modalProducto'))
 const modalImagenes = new bootstrap.Modal(document.getElementById('modalImagen'))
+const modalEditar = new bootstrap.Modal(document.getElementById('modalEditar'))
 const formArticulo = document.getElementById('FormModal')
 const formImagen = document.getElementById('FormImagen')
 const nombre = document.getElementById('nombre')
 const descripcion = document.getElementById('descripcion')
 const precio = document.getElementById('precio')
 const stock = document.getElementById('stock')
-const imagen = document.getElementById('imagen')
+////////////////////////////////////////////////////////////////////////////////////
+const idProducto = document.getElementById('getId')
+const nombreEditar = document.getElementById('nombreEditar')
+const descripcionEditar = document.getElementById('descripcionEditar')
+const precioEditar = document.getElementById('precioEditar')
+const stockEditar = document.getElementById('stockEditar')
+const imagenEditar = document.getElementById('imagenEditar')
 let opcion = ''
 
 btnCrear.addEventListener('click', () => {
@@ -25,14 +33,14 @@ btnCrear.addEventListener('click', () => {
 //Funcion
 const mostrar = (productos) => {
     productos.forEach(producto => {
-        resultados += `<tr>
+        resultados += `<tr class="text-center">
                             <td>${producto.idProducto}</td>
                             <td>${producto.nombre}</td>
                             <td>${producto.descripcion}</td>
                             <td>${producto.precio}</td>
                             <td>${producto.stock}</td>
                             <td>
-                                <img src="http://localhost:3000/${producto.images}" class="img-thumbnail" width="100px" alt="...">
+                                <img src="${url + producto.images}" class="img-thumbnail" width="100px" alt="...">
                                 <a class="btnImagen btn btn-primary">Cambiar</a></td>
                             <td class="text-center"><a class="btnEditar btn btn-primary"><i class="bi bi-pencil"></i> Editar</a> <a class="btnBorrar btn btn-danger"><i class="bi bi-x-lg"></i> Borrar</a></td>
                        </tr>
@@ -41,7 +49,7 @@ const mostrar = (productos) => {
     contenedor.innerHTML = resultados
 }
 //Mostrar
-fetch(url)
+fetch(url+'Productos')
     .then(response => response.json())
     .then(data => mostrar(data))
     .catch(error => console.log(error))
@@ -59,15 +67,15 @@ on(document, 'click', '.btnBorrar', e => {
     const id = fila.firstElementChild.innerHTML
     alertify.confirm("Seguro que desea eliminar este producto?",
         function () {
-            fetch(url +"Borrar/"+id, {
+            fetch(url +"Productos/Borrar/"+id, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(() => location.reload())
-            //alertify.success('Ok')
+            alertify.success('Ok')
         },
         function () {
-            alertify.error('Cancel')
+            alertify.error('Cancelado')
         });
 })
 
@@ -80,12 +88,13 @@ on(document, 'click', '.btnEditar', e => {
     const descripcionForm = fila.children[2].innerHTML
     const precioForm = fila.children[3].innerHTML
     const stockForm = fila.children[4].innerHTML
-    nombre.value = nombreForm
-    descripcion.value = descripcionForm
-    precio.value = precioForm
-    stock.value = stockForm
+    idProducto.value = idForm
+    nombreEditar.value = nombreForm
+    descripcionEditar.value = descripcionForm
+    precioEditar.value = precioForm
+    stockEditar.value = stockForm
     opcion = 'editar'
-    modalProductos.show()
+    modalEditar.show()
 })
 
 on(document, 'click', '.btnImagen', e => {
@@ -97,7 +106,7 @@ on(document, 'click', '.btnImagen', e => {
 
 //Procedimiento crear y editar
 
-formImagen.addEventListener('submit', (e) =>{
+/*formImagen.addEventListener('submit', (e) =>{
     if (opcion == 'imagen'){
         fetch(url+"EditImagen/"+idForm, {
             method:'PUT'
@@ -148,4 +157,4 @@ formArticulo.addEventListener('submit', (e) => {
         .then(response => location.reload())
     }
     modalProductos.hide()
-})
+})*/

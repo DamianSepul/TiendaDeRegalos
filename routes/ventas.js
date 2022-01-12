@@ -10,11 +10,10 @@ const { header } = require('express/lib/request');
 
 
 
-router.post("/AgregarCarrito/:idCliente",(req,res)=>{
-    const {idCliente}=req.params;
-    const {idProducto,cantidad}=req.body;
+router.post("/AgregarCarrito/:idProducto",(req,res)=>{
+    const {idProducto}=req.params;
     mysqlConnection.query(`
-    INSERT INTO carrito (idCliente,idProducto,cantidad) VALUES ('${idCliente}','${idProducto}','${cantidad}')
+    INSERT INTO carrito (idCliente,idProducto,cantidad) VALUES ('1','${idProducto}','1')
     `,(err,rows,fields )=>{
         if(!err){
             res.json(rows);

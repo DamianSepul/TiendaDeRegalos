@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/49f05f6d76.js" crossorigin="anonymous"></script>
+    <!-- Alertify JS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
 </head>
 
 <body>
@@ -35,41 +38,59 @@
             </a>
         </div>
     </div>
-
     <!----------------------------------Productos------------------------------------------------->
     <div class="store_items">
         <h1 id="prod_title">Productos</h1>
         <div class="container">
             <div class="row">
                 <div id="productContainer" class="product_container">
+                    <table id="tablaProductos">
+                        <thead>
+
+                        </thead>
+                        <td>
+
+                        </td>
+                    </table>
                     <!--Se cargan productos-->
                 </div>
             </div>
-            
         </div>
-
     </div>
-
     <!------------------------------Carrito de compras------------------------------------------->
-    <div class="shoping_cart">
-        <h1 id="cart_title">Carrito</h1>
-        <!-------------------------------Caja de compras----------------------------------------->
-        <div class="shoping_box">
+    <div class="container"></div>
+        <div class="shoping_cart">
+            <h1 id="cart_title">Carrito</h1>
+            <!-------------------------------Caja de compras----------------------------------------->
+            <div class="shoping_box">
+                <!----------------------------Despliegue de compras---------------------------------->
+                <table id="tablaCarrito" class="table" id="table_prod">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                    </tr>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <!----------------------------  --impresion de total------------------------------------->
+            <div class="total">
+                Total $
+            </div>
+            <!------------------------------Boton de comprar----------------------------------------->
+            <button class="shop_btn">
+                Comprar<i class="fas fa-wallet"></i>
+            </button>
         </div>
-        <!----------------------------  --impresion de total------------------------------------->
-        <div class="total">
-            Total $
-        </div>
-        <!------------------------------Boton de comprar----------------------------------------->
-        <button class="shop_btn">
-            Comprar<i class="fas fa-wallet"></i>
-        </button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous">
     </script>
     <script src="/public/script/inicio.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 </body>
 
 </html>
