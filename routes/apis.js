@@ -294,7 +294,11 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
         const {transaction_num,status,date,ammount,origin,destiny}=data.data;
         mysqlConnection.query(`INSERT INTO transacciones (numTransaccion, estado) VALUES ('${transaction_num}','${status}');
         INSERT INTO venta (fecha,numTarjeta,tipoVenta,idCliente,idTransaccion,total) VALUES('${date}','${origin}','Tienda','${idClientex}',last_insert_id(),'${ammount}');
-        INSERT INTO ventadetalle (cantidad, precio, idProducto, idVenta) VALUES ('${cantidad}','${ammount}','${idProducto}', last_insert_id())
+        INSERT INTO ventadetalle (cantidad, precio, idProducto, idVenta) VALUES ('${cantidad}','${ammount}','${idProducto}', last_insert_id());
+        UPDATE productos SET stock = stock-${cantidad} WHERE idProducto = ${idProducto};
+
+        DELETE FROM carrito
+
         `,(err,rows,fields)=>{
             if(!err){
                 res.json({status:"Transacción exitosa"});
