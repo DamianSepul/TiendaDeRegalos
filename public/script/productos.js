@@ -40,8 +40,7 @@ const mostrar = (productos) => {
                             <td>${producto.precio}</td>
                             <td>${producto.stock}</td>
                             <td>
-                                <img src="${url + producto.images}" class="img-thumbnail" width="100px" alt="...">
-                                <a class="btnImagen btn btn-primary">Cambiar</a></td>
+                                <img src="${url + producto.images}" class="img-thumbnail" width="115px" alt="...">
                             <td class="text-center"><a class="btnEditar btn btn-primary"><i class="bi bi-pencil"></i> Editar</a> <a class="btnBorrar btn btn-danger"><i class="bi bi-x-lg"></i> Borrar</a></td>
                        </tr>
                     `

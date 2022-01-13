@@ -42,6 +42,7 @@ const mostrar = (productos) => {
 const mostrar2 = (carritos) => {
     carritos.forEach(carrito => {
         resultados2 += ` <tr class="text-center">
+                                <td style="display:none">${carrito.idCarrito}</td>
                                 <td class="table">${carrito.nombre}</td>
                                 <td class="table">$${carrito.precio}</td>
                                 <td class="table">${carrito.cantidad}</td>
@@ -73,6 +74,7 @@ const on = (element, event, selector, handler) => {
 on(document, 'click', '.btnBorrar', e => {
     const fila = e.target.parentNode.parentNode
     const id = fila.firstElementChild.innerHTML
+    console.log(id)
     alertify.confirm("Seguro que desea eliminar este producto?",
         function () {
             fetch(url+"carrito/Borrar/"+id, {

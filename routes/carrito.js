@@ -22,8 +22,8 @@ router.get("/", (req, res) => {
 });
 
 router.delete("/Borrar/:id", (req, res) => {
-    const { id } = req.body;
-    mysqlConnection.query("DELETE FROM carrito WHERE idCarrito = ?", [req.params.id], function (err, rows) {
+    const id  = req.params.id;
+    mysqlConnection.query(`DELETE FROM carrito WHERE idCarrito = ${id}`, function (err, rows) {
         if (err) {
             throw err
         } else {
