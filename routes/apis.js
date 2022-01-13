@@ -273,7 +273,7 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
      let idClientex= idCliente||1;
      console.log(req.body);
 
-     const{idProducto,cantidad,precio}=req.body;
+     const{idProducto,cantidad}=req.body;
 
      const envio={
         destiny_account: "5138100775916044",
@@ -291,7 +291,7 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
         const {transaction_num,status,date,ammount,origin,destiny}=data.data;
         mysqlConnection.query(`INSERT INTO transacciones (numTransaccion, estado) VALUES ('${transaction_num}','${status}');
         INSERT INTO venta (fecha,numTarjeta,tipoVenta,idCliente,idTransaccion,total) VALUES('${date}','${origin}','Tienda','${idClientex}',last_insert_id(),'${ammount}')
-        INSERT INTO ventadetalle (cantidad, precio, idProducto, idVenta) VALUES ('${cantidad}','${precio}','${idProducto}', last_insert_id())
+        INSERT INTO ventadetalle (cantidad, precio, idProducto, idVenta) VALUES ('${cantidad}','${ammount}','${idProducto}', last_insert_id())
         `,(err,rows,fields)=>{
             if(!err){
                 res.json({status:"Transacción exitosa"});
