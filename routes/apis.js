@@ -183,22 +183,32 @@ router.get("/MontoServicioHabitacion/:idVenta",(req,res)=>{
 
 //API para realizar una petición a experiencias DEERLAND. TIENDA => EXP DEERLAND
 //Idproducto sera cambiado mas adelante del proyecto utilizando procedimientos almacenados
-router.get("/PromocionesTR/:id",(req,res)=>{
+router.post("/PromocionesTR/:id",(req,res)=>{
     const {id}=req.params;
     let idProducto=id||1;
     mysqlConnection.query(`SELECT idProducto,precio,descripcion FROM productos WHERE idProducto= ${idProducto}`,(err,rows,fields)=>{
         if(!err){
-            res.json(rows);
             console.log(rows[0].precio);
-            // axios.post("url",envio)
-            // .then(data=>{
-            //     console.log(envio);
-            // })
-            // .catch(error=>{
-            //     res.status(500).send({
-            //         message:  "Ocurrio un error con el servidor"
-            //     })
-            // });
+
+            const envio= {
+                idProducto:idProducto,
+                precio:`${rows[0].precio}`,
+                description:"Prueba Tienda de regalos"
+            }
+
+            axios.post("https://atraccionesdl.herokuapp.com/promos",envio)
+            .then(data=>{
+                res.json({
+                    mensaje:"Se guardo la informacion correctamente en experiencias deerland"
+                });
+            })
+            .catch(error=>{
+                res.status(500).send({
+                    message:  "Ocurrio un error con el servidor"
+                })
+
+                console.error(error);
+            });
         }else {
             res.json({
                 mensaje:"Ocurrio un error, favor de introducir bien el id de producto"
@@ -261,9 +271,19 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
   router.post("/SolicitudTransferencia/:idCliente",(req,res)=>{
      const {idCliente}=req.params;
      let idClientex= idCliente||1;
-     console.log(idCliente);
-    //Falta incluir que usuario lo esta utilizando pero seria en la pagina. Ese 1 es el usuario por defecto
-      axios.post("https://deerbank.herokuapp.com/transfer/",req.body,
+     console.log(req.body);
+
+     const{idProducto,cantidad}=req.body;
+
+     const envio={
+        destiny_account: "5138100775916044",
+        origin_account: req.body.origin_account,
+        cvv: req.body.cvv,
+        exp_date: req.body.exp_date,
+        ammount: req.body.ammount,
+        concept: "Venta tienda de regalos ",
+     }
+      axios.post("https://deerbank.herokuapp.com/transfer/",envio,
       {
       headers: {Authorization: "Token 7c06d1ce8d6d8789d2f97d139b95b33751766246"}
     })
@@ -271,6 +291,7 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
         const {transaction_num,status,date,ammount,origin,destiny}=data.data;
         mysqlConnection.query(`INSERT INTO transacciones (numTransaccion, estado) VALUES ('${transaction_num}','${status}');
         INSERT INTO venta (fecha,numTarjeta,tipoVenta,idCliente,idTransaccion,total) VALUES('${date}','${origin}','Tienda','${idClientex}',last_insert_id(),'${ammount}')
+        INSERT INTO ventadetalle (cantidad, precio, idProducto, idVenta) VALUES ('${cantidad}','${ammount}','${idProducto}', last_insert_id())
         `,(err,rows,fields)=>{
             if(!err){
                 res.json({status:"Transacción exitosa"});
@@ -285,7 +306,9 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
         res.status(500).send({
             message:  "Ocurrio un error con el servidor"
         })
+
+        console.log(error);
     })      
- });
+  });
 
 module.exports=router;
