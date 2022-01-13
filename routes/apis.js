@@ -271,9 +271,19 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
   router.post("/SolicitudTransferencia/:idCliente",(req,res)=>{
      const {idCliente}=req.params;
      let idClientex= idCliente||1;
-     console.log(idCliente);
-    //Falta incluir que usuario lo esta utilizando pero seria en la pagina. Ese 1 es el usuario por defecto
-      axios.post("https://deerbank.herokuapp.com/transfer/",req.body,
+     console.log(req.body);
+
+     const{idProducto,cantidad,precio}=req.body;
+
+     const envio={
+        destiny_account: req.body.destiny_account,
+        origin_account: req.body.origin_account,
+        cvv: req.body.cvv,
+        exp_date: req.body.exp_date,
+        ammount: req.body.ammount,
+        concept: "Venta tienda de regalos ",
+     }
+      axios.post("https://deerbank.herokuapp.com/transfer/",envio,
       {
       headers: {Authorization: "Token 7c06d1ce8d6d8789d2f97d139b95b33751766246"}
     })
@@ -281,6 +291,7 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
         const {transaction_num,status,date,ammount,origin,destiny}=data.data;
         mysqlConnection.query(`INSERT INTO transacciones (numTransaccion, estado) VALUES ('${transaction_num}','${status}');
         INSERT INTO venta (fecha,numTarjeta,tipoVenta,idCliente,idTransaccion,total) VALUES('${date}','${origin}','Tienda','${idClientex}',last_insert_id(),'${ammount}')
+        INSERT INTO ventadetalle (cantidad, precio, idProducto, idVenta) VALUES ('${cantidad}','${precio}','${idProducto}', last_insert_id())
         `,(err,rows,fields)=>{
             if(!err){
                 res.json({status:"Transacción exitosa"});
@@ -298,6 +309,6 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
 
         console.log(error);
     })      
- });
+  });
 
 module.exports=router;
