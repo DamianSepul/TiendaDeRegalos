@@ -1,5 +1,5 @@
-const url = 'http://localhost:3000/'
-//const url = 'https://tienda-de-regalos-deerland.herokuapp.com/'
+//const url = 'http://localhost:3000/'
+const url = 'https://tienda-de-regalos-deerland.herokuapp.com/'
 const contenedor = document.getElementById('productContainer')
 const tablaProductos = document.getElementById('tablaProductos')
 const tablaCarrito = document.getElementById('tablaCarrito')
