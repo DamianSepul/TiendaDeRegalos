@@ -38,6 +38,56 @@
             </a>
         </div>
     </div>
+    <div id="modalCompra" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-transparent text-dark">
+                    <h5 class="modal-title">Articulo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formCompra">
+                        <label for="modalTotal" class="col-form-label">Productos:</label>
+                        <table id="tablaCompra" class="table table-sm mt-2 table-bordered table-striped table-hover">
+                            <thead class="bg-transparent text-dark">
+                                <tr class="text-center">
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                        <div class="mb-3">
+                            <label for="modalTotal" class="col-form-label">Total:</label>
+                            <input id="modalTotal" name="" type="text" class="form-control w-auto text-xl-center"required disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modalTarjeta" class="col-form-label"><h6>Número de tarjeta</h6></label>
+                            <input id="modalTarjeta" maxlength="16" minlength="16" name="" type="text" class="form-control" required>
+                        </div>
+                        <h6>Fecha de expiración</h6>
+                        <div class="input-group"> 
+                            <input id="modalMes" type="number" placeholder="MM" minlength="2" maxlength="2" max="12" min="1" name="" class="form-control"required> 
+                            <input id="modalAno" type="number" placeholder="YY" minlength="2" maxlength="2" name="" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-4 mt-3"> 
+                            <label data-toggle="tooltip" title="Los tres números detrás de su tarjeta"><h6>CVV <i class="fa fa-question-circle d-inline"></i></h6></label> 
+                            <input id="modalCVV" type="text" maxlength="3" class="form-control" required> 
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
     <!----------------------------------Productos------------------------------------------------->
     <div class="store_items">
         <h1 id="prod_title">Productos</h1>
@@ -59,36 +109,35 @@
     </div>
     <!------------------------------Carrito de compras------------------------------------------->
     <div class="container"></div>
-        <div class="shoping_cart">
-            <h1 id="cart_title">Carrito</h1>
-            <!-------------------------------Caja de compras----------------------------------------->
-            <div class="shoping_box">
-                <!----------------------------Despliegue de compras---------------------------------->
-                <table id="tablaCarrito" class="table" id="table_prod">
-                    <tr>
-                        <th>Producto</th>
-                        <th>Cantidad</th>
-                        <th>Precio</th>
-                    </tr>
-                    <tbody>
-                        
-                    </tbody>
-                </table>
-            </div>
-            <!----------------------------  --impresion de total------------------------------------->
-            <div class="total">
-                Total $
-            </div>
-            <!------------------------------Boton de comprar----------------------------------------->
-            <button class="shop_btn">
-                Comprar<i class="fas fa-wallet"></i>
-            </button>
+    <div class="shoping_cart">
+        <h1 id="cart_title">Carrito</h1>
+        <!-------------------------------Caja de compras----------------------------------------->
+        <div class="shoping_box">
+            <!----------------------------Despliegue de compras---------------------------------->
+            <table id="tablaCarrito" class="table" id="table_prod">
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+                <tbody>
+
+                </tbody>
+            </table>
         </div>
+        <!----------------------------  --impresion de total------------------------------------->
+        <div class="total">
+            $
+            <input id="inputTotal" type="text" style="width: 60px; height: 40px; text-align: center;" value="0"
+                disabled>
+        </div>
+        <!------------------------------Boton de comprar----------------------------------------->
+        <button class="shop_btn" id="btnComprar">Comprar<i class="fas fa-wallet"></i></button>
+    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous">
-    </script>
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
     <script src="/public/script/inicio.js"></script>
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 </body>
