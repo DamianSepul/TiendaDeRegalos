@@ -297,7 +297,7 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
         INSERT INTO ventadetalle (cantidad, precio, idProducto, idVenta) VALUES ('${cantidad}','${ammount}','${idProducto}', last_insert_id());
         UPDATE productos SET stock = stock-${cantidad} WHERE idProducto = ${idProducto};
 
-        DELETE FROM carrito
+        DELETE FROM carrito WHERE idCliente=1
 
         `,(err,rows,fields)=>{
             if(!err){
