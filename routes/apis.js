@@ -183,22 +183,32 @@ router.get("/MontoServicioHabitacion/:idVenta",(req,res)=>{
 
 //API para realizar una petición a experiencias DEERLAND. TIENDA => EXP DEERLAND
 //Idproducto sera cambiado mas adelante del proyecto utilizando procedimientos almacenados
-router.get("/PromocionesTR/:id",(req,res)=>{
+router.post("/PromocionesTR/:id",(req,res)=>{
     const {id}=req.params;
     let idProducto=id||1;
     mysqlConnection.query(`SELECT idProducto,precio,descripcion FROM productos WHERE idProducto= ${idProducto}`,(err,rows,fields)=>{
         if(!err){
-            res.json(rows);
             console.log(rows[0].precio);
-            // axios.post("url",envio)
-            // .then(data=>{
-            //     console.log(envio);
-            // })
-            // .catch(error=>{
-            //     res.status(500).send({
-            //         message:  "Ocurrio un error con el servidor"
-            //     })
-            // });
+
+            const envio= {
+                idProducto:idProducto,
+                precio:`${rows[0].precio}`,
+                description:"Prueba Tienda de regalos"
+            }
+
+            axios.post("https://atraccionesdl.herokuapp.com/promos",envio)
+            .then(data=>{
+                res.json({
+                    mensaje:"Se guardo la informacion correctamente en experiencias deerland"
+                });
+            })
+            .catch(error=>{
+                res.status(500).send({
+                    message:  "Ocurrio un error con el servidor"
+                })
+
+                console.error(error);
+            });
         }else {
             res.json({
                 mensaje:"Ocurrio un error, favor de introducir bien el id de producto"
@@ -285,6 +295,8 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
         res.status(500).send({
             message:  "Ocurrio un error con el servidor"
         })
+
+        console.log(error);
     })      
  });
 
