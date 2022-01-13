@@ -283,6 +283,9 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
         ammount: req.body.ammount,
         concept: "Venta tienda de regalos ",
      }
+     
+    
+
       axios.post("https://deerbank.herokuapp.com/transfer/",envio,
       {
       headers: {Authorization: "Token 7c06d1ce8d6d8789d2f97d139b95b33751766246"}
@@ -290,7 +293,7 @@ router.post("/PromocionesRecepcionTR",(req,res)=>{
       .then(data=>{
         const {transaction_num,status,date,ammount,origin,destiny}=data.data;
         mysqlConnection.query(`INSERT INTO transacciones (numTransaccion, estado) VALUES ('${transaction_num}','${status}');
-        INSERT INTO venta (fecha,numTarjeta,tipoVenta,idCliente,idTransaccion,total) VALUES('${date}','${origin}','Tienda','${idClientex}',last_insert_id(),'${ammount}')
+        INSERT INTO venta (fecha,numTarjeta,tipoVenta,idCliente,idTransaccion,total) VALUES('${date}','${origin}','Tienda','${idClientex}',last_insert_id(),'${ammount}');
         INSERT INTO ventadetalle (cantidad, precio, idProducto, idVenta) VALUES ('${cantidad}','${ammount}','${idProducto}', last_insert_id())
         `,(err,rows,fields)=>{
             if(!err){
